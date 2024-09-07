@@ -1,0 +1,26 @@
+<h1>Simple Calculator</h1>
+
+<%= form_with url: '/calculator/calculate', method: :get do %>
+  <div>
+    <label>First Number:</label>
+    <%= text_field_tag :first_number, params[:first_number] %>
+  </div>
+  
+  <div>
+    <label>Second Number:</label>
+    <%= text_field_tag :second_number, params[:second_number] %>
+  </div>
+  
+  <div>
+    <label>Operation:</label>
+    <%= select_tag :operation, options_for_select([['Add', 'add'], ['Subtract', 'subtract'], ['Multiply', 'multiply'], ['Divide', 'divide']], params[:operation]) %>
+  </div>
+  
+  <div>
+    <%= submit_tag 'Calculate' %>
+  </div>
+<% end %>
+
+<% if @result %>
+  <h2>Result: <%= @result %></h2>
+<% end %>
